@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Font link -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            flex-direction: column;
+        }
+        .result {
+            max-width: 450px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            border: 2px solid #ff4d00;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .result:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            color: #ff4d00;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        p {
+            font-size: 1.4em;
+            color: #333;
+            margin: 15px 0;
+        }
+        .footer {
+            margin-top: 25px;
+            font-size: 0.9em;
+            color: #777;
+        }
+        input[type="button"] {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.3em;
+            transition: background 0.3s, transform 0.3s; /* Added transform for scaling */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+        input[type="button"]:hover {
+            background: #0056b3;
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .result {
+                width: 90%;
+                padding: 20px;
+            }
+            h2 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="result">
+        <h2>Prediction: {{ result }}</h2>
+        <p>Probability of Passing: {{ probability | round(2) }}</p>
+        <div class="footer">
+            <p>Thank you for using our prediction tool!</p>
+        </div>
+        <input type="button" value="Back to Prediction" onclick="window.location.href='/'"> <!--
